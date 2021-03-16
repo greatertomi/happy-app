@@ -23,7 +23,7 @@ const Jokes = () => {
       </div>
       <Row>
         <Col xs={24} md={12}>
-          <Card bordered={false} loading={false} className="pb-3">
+          <Card bordered={false} loading={false}>
             <Meta
               description={content}
             />
