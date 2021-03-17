@@ -11,7 +11,7 @@ const JokeCard = (props) => {
   } else if (props.category === 'Misc') {
     tagColor = 'blue';
   } else if (props.category === 'Dark') {
-    tagColor = '#181818';
+    tagColor = '#0c0c0c';
   } else if (props.category === 'Pun') {
     tagColor = 'green';
   } else if (props.category === 'Spooky') {
@@ -22,6 +22,7 @@ const JokeCard = (props) => {
     tagColor = 'orange';
   }
   const safeColor = props.safe ? 'success' : 'error';
+  const partColor = props.type === 'single' ? 'lime' : 'volcano';
 
   const content = (
     <div>
@@ -30,6 +31,7 @@ const JokeCard = (props) => {
       {props.type === 'twopart' && <p>{props.delivery}</p>}
       <div>
         <Tag color={safeColor}>{props.safe ? 'safe' : 'not safe'}</Tag>
+        <Tag color={partColor}>{props.type}</Tag>
         {props.flags.explicit && <Tag color="gold">explicit</Tag>}
         {props.flags.political && <Tag color="geekblue">political</Tag>}
       </div>
@@ -37,8 +39,8 @@ const JokeCard = (props) => {
   )
 
   return (
-    <Col xs={24} md={12}>
-      <Card bordered={false} loading={false} className="pb-3">
+    <Col xs={24} md={12} className="mt-3">
+      <Card bordered={false} loading={props.loading} className="pb-1">
         <Meta
           description={content}
         />
@@ -54,7 +56,8 @@ JokeCard.propTypes = {
   setup: PropTypes.string,
   delivery: PropTypes.string,
   joke: PropTypes.string,
-  flags: PropTypes.object
+  flags: PropTypes.object,
+  loading: PropTypes.bool
 }
 
 export default JokeCard;
