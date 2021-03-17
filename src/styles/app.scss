@@ -10,3 +10,19 @@
   align-items: center;
 }
 
+.backArrow {
+  cursor: pointer;
+  &:hover {
+    color: #898787;
+  }
+}
+
+.catCard {
+  display: flex;
+  justify-content: space-between;
+
+  .categoryIcon {
+    color: #313030;
+    font-size: 50px;
+  }
+}

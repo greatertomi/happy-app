@@ -1,34 +1,38 @@
 import React from 'react';
-import {Card, Col, Row, Tag} from 'antd';
+import {Row} from 'antd';
+import {BsArrowLeft} from 'react-icons/bs'
+import JokeCard from './JokeCard';
 
-const {Meta} = Card;
+const joke = {
+  error: false,
+  category: "Programming",
+  type: "twopart",
+  setup: "So what's a set of predefined steps the government might take to preserve the environment?",
+  delivery: "An Al-Gore-ithm.",
+  flags: {
+    nsfw: false,
+    religious: false,
+    political: false,
+    racist: false,
+    sexist: false,
+    explicit: false
+  },
+  id: 52,
+  safe: true,
+  lang: "en"
+}
 
 const Jokes = () => {
-  const content = (
-    <div>
-      <Tag color="purple" className="mb-2">Programming</Tag>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-      <p>Lorem ipsum dolor sit amet, consectetur</p>
-      <div>
-        <Tag color="success">Safe</Tag>
-        <Tag color="error">Not Safe</Tag>
-        <Tag color="gold">Pun</Tag>
-      </div>
-    </div>
-  )
   return (
     <div>
       <div>
+        <BsArrowLeft size={40} className="backArrow"/>
+      </div>
+      <div className="mb-3">
         <h1 className="text-center">Programming Jokes</h1>
       </div>
       <Row>
-        <Col xs={24} md={12}>
-          <Card bordered={false} loading={false}>
-            <Meta
-              description={content}
-            />
-          </Card>
-        </Col>
+        <JokeCard {...joke} />
       </Row>
     </div>
   );

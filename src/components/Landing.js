@@ -1,10 +1,9 @@
 import React from 'react'
 import {Row} from 'antd';
-import './styles/app.scss';
 import {FcApproval} from 'react-icons/fc';
 import CategoryCard from './CategoryCard';
 
-function RealApp() {
+function Landing() {
   return (
     <div className="app">
       <div className="header">
@@ -34,4 +33,4 @@ function RealApp() {
   );
 }
 
-export default RealApp;
+export default Landing;
