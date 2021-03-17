@@ -2,6 +2,7 @@ import React from 'react';
 import {Row} from 'antd';
 import {BsArrowLeft} from 'react-icons/bs'
 import JokeCard from './JokeCard';
+import {Link} from 'react-router-dom';
 
 const joke = {
   error: false,
@@ -24,10 +25,10 @@ const joke = {
 
 const Jokes = () => {
   return (
-    <div>
-      <div>
+    <div className="app">
+      <Link to="/">
         <BsArrowLeft size={40} className="backArrow"/>
-      </div>
+      </Link>
       <div className="mb-3">
         <h1 className="text-center">Programming Jokes</h1>
       </div>

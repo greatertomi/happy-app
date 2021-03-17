@@ -4,6 +4,10 @@
   padding: 20px;
 }
 
+a {
+  color: white !important;
+}
+
 .header {
   display: flex;
   justify-content: center;
@@ -15,6 +19,10 @@
   &:hover {
     color: #898787;
   }
+}
+
+.catCol {
+  cursor: pointer;
 }
 
 .catCard {

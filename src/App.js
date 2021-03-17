@@ -7,7 +7,7 @@ import Jokes from './components/Jokes';
 
 function App() {
   return (
-    <BrowserRouter className="app">
+    <BrowserRouter>
       <Route path="/" exact component={Landing} />
       <Route path="/jokes/:type" exact component={Jokes} />
     </BrowserRouter>
