@@ -1,12 +1,16 @@
 import React from 'react'
+import {BrowserRouter, Route} from 'react-router-dom';
+
 import './styles/app.scss';
+import Landing from './components/Landing';
 import Jokes from './components/Jokes';
 
 function App() {
   return (
-    <div className="app">
-      <Jokes />
-    </div>
+    <BrowserRouter className="app">
+      <Route path="/" exact component={Landing} />
+      <Route path="/jokes/:type" exact component={Jokes} />
+    </BrowserRouter>
   );
 }
 

@@ -10,14 +10,19 @@
   align-items: center;
 }
 
-.badge {
-  padding: 5px 10px;
-  border-radius: 10px;
-  color: white;
-  border: 0;
-  outline: 0;
-  &.badge-purple {
-    background: purple;
+.backArrow {
+  cursor: pointer;
+  &:hover {
+    color: #898787;
   }
 }
 
+.catCard {
+  display: flex;
+  justify-content: space-between;
+
+  .categoryIcon {
+    color: #313030;
+    font-size: 50px;
+  }
+}

@@ -2,11 +2,32 @@ import React from 'react';
 import {Card, Col} from 'antd';
 import PropTypes from 'prop-types';
 
+import {FaRandom} from 'react-icons/fa';
+import {VscSymbolMisc} from 'react-icons/vsc';
+import {GiHairStrands, GiSpookyHouse} from 'react-icons/gi';
+import {GoUnfold} from 'react-icons/go';
+import {MdGrade, MdComputer} from 'react-icons/md';
+import {BsLayoutSplit, BsLayoutTextSidebar} from 'react-icons/bs';
+
 const CategoryCard = ({title, content}) => {
   return (
     <Col xs={24} md={12} lg={6} className="mt-2">
       <Card title={title} bordered={false}>
-        {content}
+        <div className="catCard">
+          <div>
+            {content}</div>
+          <div>
+            {title === 'Any Jokes' && <FaRandom className="categoryIcon"/>}
+            {title === 'Programming Jokes' && <MdComputer className="categoryIcon"/>}
+            {title === 'Misc Jokes' && <VscSymbolMisc className="categoryIcon"/>}
+            {title === 'Dark Jokes' && <GiHairStrands className="categoryIcon"/>}
+            {title === 'Pun Jokes' && <GoUnfold className="categoryIcon"/>}
+            {title === 'Spooky Jokes' && <GiSpookyHouse className="categoryIcon"/>}
+            {title === 'Christmas Jokes' && <MdGrade className="categoryIcon"/>}
+            {title === 'Single' && <BsLayoutTextSidebar className="categoryIcon"/>}
+            {title === 'Two Part' && <BsLayoutSplit className="categoryIcon"/>}
+          </div>
+        </div>
       </Card>
     </Col>
   );
