@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react';
-import {Row} from 'antd';
+import {Row, Button, Alert} from 'antd';
 import {BsArrowLeft} from 'react-icons/bs'
+import {FiRefreshCw} from 'react-icons/fi'
 import axios from 'axios';
 
 import JokeCard from './JokeCard';
@@ -9,6 +10,10 @@ import {Link, useParams} from 'react-router-dom';
 const Jokes = () => {
   const [jokes, setJokes] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState({
+    show: false,
+    message: ''
+  });
   const {type} = useParams()
 
   const toTitleCase = () => {
@@ -30,8 +35,19 @@ const Jokes = () => {
     const {jokes} = res.data
     setJokes(jokes);
     setLoading(false);
+
+    setError({
+      show: res.status !== 200,
+      message: 'An error occurred while trying to fetch jokes'
+    });
+
+    setError({
+      show: window.navigator.onLine !== true,
+      message: 'You are currently offline. Please check your network'
+    })
   }
 
+  const {show, message} = error;
   return (
     <div className="app">
       <Link to="/">
@@ -40,9 +56,25 @@ const Jokes = () => {
       <div className="mb-3">
         <h1 className="text-center">{toTitleCase()} Jokes</h1>
       </div>
-      <Row gutter={16}>
-        {jokes.map(joke => <JokeCard key={joke.id} {...joke} loading={loading} />)}
-      </Row>
+      {show ? (
+        <Alert
+          message="Connection Error"
+          description={message}
+          type="error"
+          showIcon
+        />
+      ) : (
+        <div>
+          <Row gutter={16}>
+            {jokes.map(joke => <JokeCard key={joke.id} {...joke} loading={loading} />)}
+          </Row>
+          <div className="mt-5 refreshDiv">
+            <Button type="primary" shape="round" icon={<FiRefreshCw />} size="large" onClick={getJokes}>
+              <span className="ml-1">Get Some Fresh Jokes</span>
+            </Button>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
